@@ -1,11 +1,12 @@
 # == Schema Information
 #
-# Table name: npcs
+# Table name: races
 #
 #  id         :integer          not null, primary key
+#  name       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Npc < ApplicationRecord
-  has_one :character, as: :characterable, dependent: :destroy, autosave: true
+class Race < ApplicationRecord
+  has_many :characters
 end

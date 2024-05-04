@@ -10,17 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_04_063759) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_04_065003) do
   create_table "characters", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.string "size"
     t.string "type"
     t.string "type_tag"
     t.string "alignment"
+    t.integer "race_id"
     t.integer "characterable_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["characterable_id"], name: "index_characters_on_characterable_id"
+    t.index ["race_id"], name: "index_characters_on_race_id"
   end
 
   create_table "monsters", force: :cascade do |t|
@@ -36,16 +38,20 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_04_063759) do
   end
 
   create_table "players", force: :cascade do |t|
-    t.integer "race_id", null: false
     t.text "traits"
     t.text "ideals"
     t.text "bonds"
     t.text "flaws"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["race_id"], name: "index_players_on_race_id"
+  end
+
+  create_table "races", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "characters", "characterables"
-  add_foreign_key "players", "races"
+  add_foreign_key "characters", "races"
 end

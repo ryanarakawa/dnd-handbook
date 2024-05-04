@@ -9,4 +9,5 @@
 #  updated_at      :datetime         not null
 #
 class Monster < ApplicationRecord
+  has_one :character, as: :characterable, dependent: :destroy, autosave: true
 end
