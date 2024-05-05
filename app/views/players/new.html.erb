@@ -1,0 +1,17 @@
+<h1>Create New Player</h1>
+
+<%= form_with(model: @player, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :race_id, 'Race' %>
+    <%= form.collection_select :race_id, @races, :id, :name, { prompt: 'Select a Race' }, { required: true } %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Create Player" %>
+  </div>
+<% end %>

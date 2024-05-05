@@ -8,5 +8,5 @@
 #  updated_at :datetime         not null
 #
 class Race < ApplicationRecord
-  has_many :characters
+  has_many :players
 end

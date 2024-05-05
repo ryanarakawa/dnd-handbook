@@ -3,10 +3,8 @@
 # Table name: players
 #
 #  id         :integer          not null, primary key
-#  traits     :text
-#  ideals     :text
-#  bonds      :text
-#  flaws      :text
+#  name       :string           not null
+#  race_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
